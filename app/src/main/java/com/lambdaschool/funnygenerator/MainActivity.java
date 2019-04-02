@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                final String result = AdviceDAO.getAdvice();
+                final String result = AdviceDAO.getRandomAdvice();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

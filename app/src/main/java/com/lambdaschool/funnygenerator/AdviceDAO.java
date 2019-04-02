@@ -4,8 +4,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AdviceDAO {
-    public static String getAdvice() {
-        String result = NetworkAdapter.httpRequest("https://api.adviceslip.com/advice");
+
+    public static final String GER_RANDOM_ADVICE_URL = "https://api.adviceslip.com/advice";
+
+    // S03M02-4 write method to get data from specific url
+    public static String getRandomAdvice() {
+        String result = NetworkAdapter.httpRequest(GER_RANDOM_ADVICE_URL);
       /*{
             "slip": {
                     "advice": "Never buy cheap cling film.",
