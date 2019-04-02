@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!--S03M02-5.5 change menu items for navigation menu-->
     <item
         android:id="@+id/navigation_advice"
         android:icon="@drawable/ic_21_thinking"
@@ -12,8 +13,8 @@
         android:title="@string/title_insult" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_joke"
+        android:icon="@drawable/ic_10_laughing"
+        android:title="@string/title_joke" />
 
 </menu>

@@ -8,6 +8,7 @@ public class InsultDAO {
 
     public static String getRandomInsult() {
         StringBuilder urlBuilder = new StringBuilder(BASE_URL);
+        // S03M02-7 add parameters to url
         urlBuilder.append("?type=json&lang=en");
         String result = NetworkAdapter.httpRequest(urlBuilder.toString());
 

@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_advice:
+                    // S03M02-6 spun up new thread to perform network transaction and connect to UI
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -45,8 +46,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }).start();
                     return true;
-                case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
+                case R.id.navigation_joke:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String result = DadJokeDAO.getRandomJoke();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mTextMessage.setText(result);
+                                }
+                            });
+                        }
+                    }).start();
                     return true;
             }
             return false;
