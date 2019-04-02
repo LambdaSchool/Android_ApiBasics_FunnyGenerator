@@ -35,7 +35,7 @@ public class NetworkAdapter {
             connection.setReadTimeout(READ_TIMEOUT);
 
             // optional to support apis with header requirements
-            // S02M02-9 add support for header properties
+            // S02M03-9 add support for header properties
             if(headerProperties != null) {
                 for(Map.Entry<String, String> entry: headerProperties.entrySet()) {
                     connection.setRequestProperty(entry.getKey(), entry.getValue());
