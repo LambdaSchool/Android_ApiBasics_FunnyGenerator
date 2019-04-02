@@ -17,11 +17,33 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                case R.id.navigation_advice:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String result = AdviceDAO.getRandomAdvice();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mTextMessage.setText(result);
+                                }
+                            });
+                        }
+                    }).start();
                     return true;
-                case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
+                case R.id.navigation_insult:
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            final String result = InsultDAO.getRandomInsult();
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mTextMessage.setText(result);
+                                }
+                            });
+                        }
+                    }).start();
                     return true;
                 case R.id.navigation_notifications:
                     mTextMessage.setText(R.string.title_notifications);
@@ -39,19 +61,6 @@ public class MainActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final String result = AdviceDAO.getRandomAdvice();
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        mTextMessage.setText(result);
-                    }
-                });
-            }
-        }).start();
 
     }
 

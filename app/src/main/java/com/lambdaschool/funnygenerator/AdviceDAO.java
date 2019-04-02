@@ -10,13 +10,8 @@ public class AdviceDAO {
     // S03M02-4 write method to get data from specific url
     public static String getRandomAdvice() {
         String result = NetworkAdapter.httpRequest(GER_RANDOM_ADVICE_URL);
-      /*{
-            "slip": {
-                    "advice": "Never buy cheap cling film.",
-                    "slip_id": "25"
-            }
-        }*/
-      String advice = "";
+
+        String advice = "";
         try {
             JSONObject jsonObject = new JSONObject(result);
             JSONObject slipObject = jsonObject.getJSONObject("slip");
